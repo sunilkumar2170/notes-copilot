@@ -1,0 +1,28 @@
+Clinical Note Documentation Guidelines (Synthetic Reference)
+
+1. Neutral language only. Notes should describe what was said and
+   observed, not interpret intent or diagnose. Use phrases like
+   "client reported" or "client stated" rather than "client is."
+
+2. Follow-up actions must be concrete and attributable. Every action
+   item should specify who is responsible (client or clinician) and,
+   where possible, a rough timeframe.
+
+3. Mood and affect should be recorded using the client's own words
+   where available, supplemented with clinician observation clearly
+   labeled as such (e.g. "client appeared low energy" vs "client
+   reported feeling low energy").
+
+4. Recurring themes across sessions should be noted explicitly when
+   a topic has come up more than once, so patterns are visible to
+   whoever reads the chart next — including another clinician
+   covering a session.
+
+5. Avoid summarizing so briefly that clinical nuance is lost, but
+   avoid verbatim transcription — a note should be usable by another
+   clinician who was not present in the session.
+
+6. Any safety-relevant content must be documented factually and
+   precisely: what was said, what was asked in response, and what
+   the client's stated intent or denial was. Do not soften or
+   omit this information for brevity.

@@ -1,0 +1,37 @@
+{
+  "session_1_normal": {
+    "summary": "Client reported improved mood compared to the prior week, with morning anxiety before work that eases once tasks begin. Client practiced a breathing exercise inconsistently. Sleep remains disrupted with early waking around 4am.",
+    "key_topics": ["anticipatory anxiety", "grounding technique adherence", "sleep disruption"],
+    "mood_indicators": ["mild anxiety", "improved from previous week"],
+    "follow_up_actions": [
+      "Practice breathing exercise daily, anchored to morning coffee routine",
+      "Begin evening journaling before bed",
+      "Continue monitoring early waking pattern"
+    ],
+    "risk_flag": false
+  },
+  "session_2_followup_heavy": {
+    "summary": "Client had strong adherence to the breathing exercise but inconsistent journaling. Client reported avoidance behavior around an upcoming work deadline due to fear of inadequate performance. Plan was made to break the task into smaller steps. Client has been avoiding a conversation with their manager about workload.",
+    "key_topics": ["task avoidance", "performance anxiety", "workload management"],
+    "mood_indicators": ["overwhelmed", "avoidant"],
+    "follow_up_actions": [
+      "Continue morning breathing exercise",
+      "Move journaling to after dinner instead of before bed",
+      "Write project outline within 15 minutes by tomorrow evening",
+      "Send message to manager to schedule a workload conversation"
+    ],
+    "risk_flag": false
+  },
+  "session_3_risk_language": {
+    "summary": "Client reported a difficult week with persistent low mood, exhaustion, and passive thoughts about the point of trying, particularly at night. Client denied any intent, plan, or thoughts of self-harm when directly asked. Therapist increased check-in frequency and initiated a psychiatry referral for further evaluation.",
+    "key_topics": ["persistent low mood", "passive hopelessness", "safety check-in"],
+    "mood_indicators": ["low mood", "exhaustion", "passive hopelessness — no intent or plan reported"],
+    "follow_up_actions": [
+      "Increase check-in frequency to twice weekly",
+      "Daily mood rating (1-10) tracking for two weeks",
+      "Psychiatry referral for mood and sleep evaluation",
+      "Client instructed to reach out immediately if thoughts shift toward intent to act"
+    ],
+    "risk_flag": true
+  }
+}
