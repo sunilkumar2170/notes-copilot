@@ -1,0 +1,36 @@
+Safety and Risk-Flagging Protocol (Synthetic Reference)
+
+1. Purpose of risk flagging. The tool's risk_flag exists to surface
+   language patterns for a human clinician to review promptly — it is
+   a triage signal, not a clinical determination. The tool must never
+   generate advice, reassurance, or a safety plan on its own.
+
+2. What should trigger a flag. Passive hopelessness, expressed
+   exhaustion with living, direct or indirect references to
+   self-harm or not wanting to continue, and any explicit statement
+   of intent or plan should all trigger risk_flag = true. Ambiguous
+   language should be flagged rather than silently passed through —
+   false positives are an acceptable cost; false negatives are not.
+
+3. What the system must NOT do. It must not attempt to assess
+   severity, predict likelihood of harm, or suggest an intervention.
+   It must not contact emergency services or any third party
+   automatically. All of that remains a human clinical decision.
+
+4. Escalation path. A flagged session should route to the assigned
+   clinician's review queue with priority markers, and — if the
+   clinician does not review it within a defined window — escalate
+   to a supervising clinician. The exact SLA is a clinical-ops
+   decision, not something the extraction tool should hardcode.
+
+5. Data handling. Any transcript or extracted note containing
+   safety-relevant content must be treated as sensitive clinical
+   data: access-controlled, not used for unrelated analytics without
+   explicit governance approval, and retained according to the
+   organization's clinical record-keeping policy — not the
+   engineering team's default data retention settings.
+
+6. Synthetic data only in development. No real client transcripts
+   or identifying information should ever be used in development,
+   testing, or this evaluation exercise. All test data here is
+   fabricated and does not represent a real person.

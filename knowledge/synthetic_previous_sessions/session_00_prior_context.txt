@@ -1,0 +1,24 @@
+Session Date: 2026-08-07
+Session Type: Individual Therapy — Session 3 (prior to session_1_normal.txt)
+
+Therapist: Let's pick up from where we left off — how has the week been?
+
+Client: A bit tough. I've noticed I get really anxious in the mornings before work, even though nothing bad usually happens once I'm there.
+
+Therapist: That's a helpful thing to notice — anticipatory anxiety rather than something tied to the work itself. Has this been happening most days?
+
+Client: Pretty much every weekday. Weekends are fine.
+
+Therapist: Let's start tracking it — just a quick note each morning on a scale of 1 to 10 how anxious you feel before leaving for work. That'll help us see if it's constant or if certain days are worse.
+
+Client: Okay, I can do that.
+
+Therapist: How has sleep been?
+
+Client: Not great. I fall asleep okay but I've been waking up early, around 4 or 5am, and just lying there.
+
+Therapist: We'll keep tracking that too. For now let's introduce one grounding tool — a simple breathing exercise you can use when the morning anxiety starts. I'll walk you through it now.
+
+Client: Sure.
+
+Therapist: [breathing exercise guidance] Try this once or twice this week and let's see how it feels.
