@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 google-genai>=1.0.0
+=======
+>>>>>>> 039a93fc7a3d11585e0d76b1ffc6027cc3b3e691
 google-generativeai>=0.8.0
 python-dotenv>=1.0.0
 fastapi>=0.115.0

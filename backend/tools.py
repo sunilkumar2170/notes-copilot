@@ -13,12 +13,16 @@ Each tool is a plain function so it's also trivially exposable via MCP
 (see mcp_server.py) without any wrapper logic duplicated.
 """
 
+<<<<<<< HEAD
 import os
 import sys
 from datetime import datetime, timedelta
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
+=======
+from datetime import datetime, timedelta
+>>>>>>> 039a93fc7a3d11585e0d76b1ffc6027cc3b3e691
 from schemas import SessionExtraction, NoteToolResult, RiskToolResult, FollowupToolResult, AgentOutput
 
 

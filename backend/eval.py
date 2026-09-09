@@ -20,6 +20,7 @@ Run:
     python eval.py
 """
 
+<<<<<<< HEAD
 import os
 import sys
 import json
@@ -31,6 +32,11 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 load_dotenv()
 
+=======
+import json
+from pathlib import Path
+import numpy as np
+>>>>>>> 039a93fc7a3d11585e0d76b1ffc6027cc3b3e691
 from extraction import extract_session_notes
 from rag import embed_text
 

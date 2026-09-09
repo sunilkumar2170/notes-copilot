@@ -13,6 +13,7 @@ Run:
 """
 
 import os
+<<<<<<< HEAD
 import sys
 from dotenv import load_dotenv
 
@@ -26,6 +27,14 @@ try:
 except (ImportError, ModuleNotFoundError):
     from mcp.server.fastmcp import FastMCP
     mcp = FastMCP("notes-copilot")
+=======
+from mcp.server.fastmcp import FastMCP
+from extraction import extract_session_notes
+from rag import index_documents, retrieve_relevant_context, build_context
+from tools import run_agent
+
+mcp = FastMCP("notes-copilot")
+>>>>>>> 039a93fc7a3d11585e0d76b1ffc6027cc3b3e691
 
 KNOWLEDGE_DIR = os.path.join(os.path.dirname(__file__), "..", "knowledge")
 _rag_index = None
