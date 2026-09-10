@@ -1,21 +1,13 @@
 """
-<<<<<<< HEAD
 main.py — Notes Copilot FastAPI Clinical Dashboard
 
 Full pipeline: RAG grounding -> extraction -> agent tools.
 Provides a modern clinical dashboard for therapists and clinicians to review
 and finalize AI-generated session notes.
-=======
-main.py — Notes Copilot FastAPI app
-
-Single-file backend + frontend for fast, clean deployment.
-Wires the full pipeline: RAG grounding -> extraction -> agent tools.
->>>>>>> 039a93fc7a3d11585e0d76b1ffc6027cc3b3e691
 
 Run locally:
     uvicorn main:app --reload
 
-<<<<<<< HEAD
 Deploy:
     uvicorn main:app --host 0.0.0.0 --port $PORT
 """
@@ -30,21 +22,11 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from fastapi import FastAPI, Form, Request
 from fastapi.responses import HTMLResponse, JSONResponse
-=======
-Deploy (Render):
-    Start command -> uvicorn main:app --host 0.0.0.0 --port $PORT
-"""
-
-import os
-from fastapi import FastAPI, Form
-from fastapi.responses import HTMLResponse
->>>>>>> 039a93fc7a3d11585e0d76b1ffc6027cc3b3e691
 from extraction import extract_session_notes
 from rag import index_documents, retrieve_relevant_context, build_context
 from tools import run_agent
 from schemas import PipelineResult
 
-<<<<<<< HEAD
 load_dotenv()
 
 app = FastAPI(title="Notes Copilot - Clinical Documentation Assistant")
@@ -52,11 +34,6 @@ app = FastAPI(title="Notes Copilot - Clinical Documentation Assistant")
 BASE_DIR = Path(__file__).parent.parent
 KNOWLEDGE_DIR = str(BASE_DIR / "knowledge")
 TRANSCRIPTS_DIR = BASE_DIR / "transcripts"
-=======
-app = FastAPI(title="Notes Copilot")
-
-KNOWLEDGE_DIR = os.path.join(os.path.dirname(__file__), "..", "knowledge")
->>>>>>> 039a93fc7a3d11585e0d76b1ffc6027cc3b3e691
 
 _rag_index = None
 _rag_chunks = None
@@ -70,11 +47,7 @@ def get_rag_index():
 
 
 def process_transcript(transcript: str) -> PipelineResult:
-<<<<<<< HEAD
     """Full pipeline: retrieve grounding context -> extract -> run agent tools."""
-=======
-    """Full pipeline: retrieve grounding context -> extract -> run agent."""
->>>>>>> 039a93fc7a3d11585e0d76b1ffc6027cc3b3e691
     index, chunks = get_rag_index()
     relevant = retrieve_relevant_context(index, chunks, transcript, k=3)
     context = build_context(relevant)
@@ -89,7 +62,6 @@ def process_transcript(transcript: str) -> PipelineResult:
     )
 
 
-<<<<<<< HEAD
 PAGE_TEMPLATE = """<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -387,76 +359,11 @@ PAGE_TEMPLATE = """<!DOCTYPE html>
         }
 
         .section-label {
-=======
-PAGE_TEMPLATE = """
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Notes Copilot</title>
-    <meta charset="UTF-8">
-    <style>
-        :root {{
-            --primary: #4f46e5;
-            --primary-dark: #4338ca;
-            --danger: #dc2626;
-            --danger-bg: #fef2f2;
-            --safe-bg: #f0fdf4;
-            --safe-text: #166534;
-            --border: #e5e7eb;
-            --text-muted: #6b7280;
-            --bg: #f9fafb;
-        }}
-        * {{ box-sizing: border-box; }}
-        body {{
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-            max-width: 780px;
-            margin: 0 auto;
-            padding: 32px 20px 60px;
-            background: var(--bg);
-            color: #111827;
-        }}
-        h2 {{ font-size: 26px; margin-bottom: 4px; }}
-        .subtitle {{ color: var(--text-muted); font-size: 14px; margin-bottom: 24px; }}
-        .card {{
-            background: white;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px 24px;
-            margin-bottom: 20px;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.04);
-        }}
-        textarea {{
-            width: 100%;
-            height: 220px;
-            font-family: 'SF Mono', Consolas, monospace;
-            font-size: 13px;
-            padding: 12px;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            resize: vertical;
-        }}
-        textarea:focus {{ outline: 2px solid var(--primary); outline-offset: -1px; }}
-        button {{
-            margin-top: 12px;
-            padding: 10px 22px;
-            font-size: 14px;
-            font-weight: 600;
-            color: white;
-            background: var(--primary);
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.15s;
-        }}
-        button:hover {{ background: var(--primary-dark); }}
-        .section-title {{
->>>>>>> 039a93fc7a3d11585e0d76b1ffc6027cc3b3e691
             font-size: 12px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             color: var(--text-muted);
-<<<<<<< HEAD
             margin-bottom: 8px;
             display: flex;
             align-items: center;
@@ -725,114 +632,19 @@ PAGE_TEMPLATE = """
             });
         }
     </script>
-=======
-            margin: 0 0 8px;
-        }}
-        .badge {{
-            display: inline-block;
-            padding: 4px 12px;
-            border-radius: 999px;
-            font-size: 13px;
-            font-weight: 600;
-            margin-bottom: 16px;
-        }}
-        .badge-danger {{ background: var(--danger-bg); color: var(--danger); }}
-        .badge-safe {{ background: var(--safe-bg); color: var(--safe-text); }}
-        .chip {{
-            display: inline-block;
-            background: #eef2ff;
-            color: var(--primary-dark);
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 13px;
-            margin: 2px 4px 2px 0;
-        }}
-        .grounding-list {{
-            font-size: 13px;
-            color: var(--text-muted);
-        }}
-        .grounding-list code {{
-            background: #f3f4f6;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-size: 12px;
-        }}
-        ul.actions {{ margin: 0; padding-left: 20px; }}
-        ul.actions li {{ margin-bottom: 6px; }}
-        .note-box {{
-            background: #fafafa;
-            border: 1px dashed var(--border);
-            border-radius: 8px;
-            padding: 14px 16px;
-            font-size: 14px;
-            line-height: 1.6;
-            white-space: pre-wrap;
-        }}
-        .pending-tag {{
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            color: #d97706;
-            background: #fffbeb;
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-left: 8px;
-        }}
-        details {{ margin-top: 16px; }}
-        summary {{
-            cursor: pointer;
-            font-size: 13px;
-            color: var(--text-muted);
-            font-weight: 600;
-        }}
-        pre {{
-            background: #111827;
-            color: #d1d5db;
-            padding: 16px;
-            border-radius: 8px;
-            font-size: 12px;
-            overflow-x: auto;
-            margin-top: 8px;
-        }}
-        .error-box {{
-            background: var(--danger-bg);
-            color: var(--danger);
-            padding: 14px 16px;
-            border-radius: 8px;
-            font-size: 14px;
-        }}
-    </style>
-</head>
-<body>
-    <h2>Notes Copilot</h2>
-    <p class="subtitle">Paste a session transcript to generate a structured, clinician-reviewed draft note.</p>
-
-    <div class="card">
-        <form method="post" action="/extract-form">
-            <textarea name="transcript" placeholder="Paste transcript here...">{transcript}</textarea><br>
-            <button type="submit">Extract Notes</button>
-        </form>
-    </div>
-
-    {result}
->>>>>>> 039a93fc7a3d11585e0d76b1ffc6027cc3b3e691
 </body>
 </html>
 """
 
 
-<<<<<<< HEAD
 def render_page(transcript: str = "", result_html: str = "") -> str:
     return PAGE_TEMPLATE.replace("__TRANSCRIPT__", transcript).replace("__RESULT__", result_html)
 
 
-=======
->>>>>>> 039a93fc7a3d11585e0d76b1ffc6027cc3b3e691
 def render_result(result: PipelineResult) -> str:
     extraction = result.extraction
 
     if extraction.risk_flag:
-<<<<<<< HEAD
         flag_banner = """
         <div class="status-alert danger">
             <span class="alert-icon">⚠️</span>
@@ -921,37 +733,6 @@ def render_result(result: PipelineResult) -> str:
         <!-- Collapsible Raw JSON -->
         <details>
             <summary>View Validated JSON & Agent Tool Payloads</summary>
-=======
-        flag_badge = '<span class="badge badge-danger">⚠ Flagged for clinician review</span>'
-    else:
-        flag_badge = '<span class="badge badge-safe">No risk flag</span>'
-
-    topics_html = "".join(f'<span class="chip">{t}</span>' for t in extraction.key_topics)
-    mood_html = "".join(f'<span class="chip">{m}</span>' for m in extraction.mood_indicators)
-    actions_html = "".join(f"<li>{a}</li>" for a in extraction.follow_up_actions) or "<li>None recorded</li>"
-    grounding_html = ", ".join(f"<code>{g}</code>" for g in result.grounding_used) or "none"
-
-    return f"""
-    <div class="card">
-        {flag_badge}
-        <div class="section-title">Summary</div>
-        <div class="note-box">{extraction.summary}</div>
-
-        <div class="section-title" style="margin-top:20px;">Key Topics</div>
-        <div>{topics_html or '<span style="color:#9ca3af;font-size:13px;">None identified</span>'}</div>
-
-        <div class="section-title" style="margin-top:20px;">Mood Indicators</div>
-        <div>{mood_html or '<span style="color:#9ca3af;font-size:13px;">None identified</span>'}</div>
-
-        <div class="section-title" style="margin-top:20px;">Follow-up Actions <span class="pending-tag">Pending Approval</span></div>
-        <ul class="actions">{actions_html}</ul>
-
-        <div class="section-title" style="margin-top:20px;">Grounding Used</div>
-        <div class="grounding-list">{grounding_html}</div>
-
-        <details>
-            <summary>View raw JSON output</summary>
->>>>>>> 039a93fc7a3d11585e0d76b1ffc6027cc3b3e691
             <pre>{result.model_dump_json(indent=2)}</pre>
         </details>
     </div>
@@ -960,11 +741,7 @@ def render_result(result: PipelineResult) -> str:
 
 @app.get("/", response_class=HTMLResponse)
 def home():
-<<<<<<< HEAD
     return render_page(transcript="", result_html="")
-=======
-    return PAGE_TEMPLATE.format(transcript="", result="")
->>>>>>> 039a93fc7a3d11585e0d76b1ffc6027cc3b3e691
 
 
 @app.post("/extract-form", response_class=HTMLResponse)
@@ -972,17 +749,10 @@ def extract_form(transcript: str = Form(...)):
     try:
         result = process_transcript(transcript)
         result_html = render_result(result)
-<<<<<<< HEAD
     except Exception as e:
         result_html = f'<div class="card"><div class="error-alert"><strong>Extraction Failed:</strong> {e}</div></div>'
 
     return render_page(transcript=transcript, result_html=result_html)
-=======
-    except ValueError as e:
-        result_html = f'<div class="card"><div class="error-box">Extraction failed: {e}</div></div>'
-
-    return PAGE_TEMPLATE.format(transcript=transcript, result=result_html)
->>>>>>> 039a93fc7a3d11585e0d76b1ffc6027cc3b3e691
 
 
 @app.post("/extract")
@@ -993,8 +763,4 @@ def extract_api(transcript: str = Form(...)):
 
 @app.get("/health")
 def health():
-<<<<<<< HEAD
     return {"status": "ok", "sdk": "google-genai", "rag": "faiss"}
-=======
-    return {"status": "ok"}
->>>>>>> 039a93fc7a3d11585e0d76b1ffc6027cc3b3e691

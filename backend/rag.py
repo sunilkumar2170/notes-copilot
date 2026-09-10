@@ -33,7 +33,6 @@ import os
 import glob
 import numpy as np
 import faiss
-<<<<<<< HEAD
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -47,13 +46,6 @@ try:
 except ImportError:
     import google.generativeai as legacy_genai
     USE_MODERN_SDK = False
-=======
-import google.generativeai as genai
-
-genai.configure(api_key=os.environ.get("GEMINI_API_KEY"))
-
-EMBEDDING_MODEL = "models/gemini-embedding-001"
->>>>>>> 039a93fc7a3d11585e0d76b1ffc6027cc3b3e691
 
 KNOWLEDGE_CATEGORIES = {
     "documentation_guidelines": "documentation_guidelines",
@@ -62,7 +54,6 @@ KNOWLEDGE_CATEGORIES = {
 }
 
 
-<<<<<<< HEAD
 _EMBED_CACHE = {}
 
 
@@ -112,13 +103,6 @@ def embed_text(text: str) -> np.ndarray:
             except Exception:
                 continue
         raise ValueError("Legacy embedding generation failed across all available Gemini embedding models.")
-=======
-def embed_text(text: str) -> np.ndarray:
-    """Get an embedding vector for a piece of text via Gemini.
-    Shared by rag.py (indexing/retrieval) and eval.py (similarity scoring)."""
-    result = genai.embed_content(model=EMBEDDING_MODEL, content=text)
-    return np.array(result["embedding"], dtype="float32")
->>>>>>> 039a93fc7a3d11585e0d76b1ffc6027cc3b3e691
 
 
 def _chunk_text(text: str, chunk_size: int = 400) -> list:
